@@ -1,15 +1,38 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google"; // ganti import font-nya
 import "./globals.css";
+import { Outfit } from "next/font/google";
+import { Sniglet } from "next/font/google";
+import { Montserrat } from "next/font/google";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import SmoothScroll from "./components/SmoothScroll";
+
+const jakarta = Plus_Jakarta_Sans({
+  variable: "--font-jakarta",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"], // bebas, sesuai kebutuhan
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const outfit = Outfit({
   subsets: ["latin"],
+  variable: "--font-outfit",
+});
+
+const sniglet = Sniglet({
+  subsets: ["latin"],
+  weight: ["400", "800"],
+  variable: "--font-sniglet",
+  display: "swap",
+});
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"], // bebas kamu pilih sesuai kebutuhan
+  variable: "--font-montserrat",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -24,8 +47,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+      <body
+        className={`${jakarta.variable}  ${outfit.variable} ${montserrat.variable} ${sniglet.variable} font-jakarta`}
+      >
+        <SmoothScroll />
+        <Header />
+
+        <div className="-top-[77px] bg-[#0052FF]">{children}</div>
+
+        <Footer />
       </body>
     </html>
   );
