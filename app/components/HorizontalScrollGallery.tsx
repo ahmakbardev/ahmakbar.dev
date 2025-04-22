@@ -108,34 +108,29 @@ export default function HorizontalScrollGallery() {
 
                 {/* Back Card */}
                 <motion.div
-                  initial={false}
-                  animate={
-                    isActive
-                      ? {
-                          rotate: "0deg",
-                          scale: 1,
-                          x: [0, 30, 60],
-                          zIndex: 40,
-                        }
-                      : {
-                          rotate: "10deg",
-                          scale: 1,
-                          x: 0,
-                          zIndex: 15,
-                        }
-                  }
-                  transition={
-                    isActive
-                      ? {
-                          duration: 0.9,
-                          ease: "easeInOut",
-                          times: [0, 0.3, 0.6, 1],
-                        }
-                      : {
-                          duration: 0.5,
-                          ease: [0.22, 1, 0.36, 1],
-                        }
-                  }
+                  initial={{
+                    rotate: "0deg",
+                    scale: 0.9,
+                    x: 0,
+                    zIndex: 15,
+                  }}
+                  animate={{
+                    rotate: hoveredCard === i ? "10deg" : "0deg",
+                    scale: hoveredCard === i ? 1 : 0.9,
+                    x: activeCard === i ? [0, 30, 60] : 0,
+                    zIndex: activeCard === i ? 40 : 15,
+                  }}
+                  transition={{
+                    rotate: { duration: 0.001, ease: "easeInOut" },
+                    x:
+                      activeCard === i
+                        ? {
+                            duration: 0.9,
+                            ease: "easeInOut",
+                            times: [0, 0.3, 0.6, 1],
+                          }
+                        : { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
+                  }}
                   onMouseEnter={() => {
                     setActiveCard(i);
                   }}
