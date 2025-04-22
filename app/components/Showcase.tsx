@@ -1,26 +1,9 @@
 "use client";
 
-import { useState } from "react";
 import RotatingWords from "./RotatingWords";
 import HorizontalScrollGallery from "./HorizontalScrollGallery";
 
 export default function Showcase() {
-  const [active, setActive] = useState<"mobile" | "website">("website");
-
-  const websiteImages = [
-    "/designs/peppy-ui.webp",
-    "/designs/peppy-shop.webp",
-    "/designs/home-interior.webp",
-  ];
-
-  const mobileImages = [
-    "/designs/mobile-mock-1.webp",
-    "/designs/mobile-mock-2.webp",
-    "/designs/mobile-mock-3.webp",
-  ];
-
-  const displayedImages = active === "website" ? websiteImages : mobileImages;
-
   return (
     <section className="bg-white py-16 px-6 lg:px-20">
       <div className="max-w-7xl mx-auto">

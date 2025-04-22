@@ -11,28 +11,6 @@ import {
 } from "react-icons/si";
 import { MonitorCog, LayoutDashboard, ClipboardList } from "lucide-react";
 
-const features = [
-  {
-    title: "SUBSCRIBE TO CREATORS",
-    desc: "you will receive $CLUB every second",
-    value: "20.24 $CLUB",
-    footer: "baseclub.eth",
-  },
-  {
-    title: "CHOOSE HIGHT $CLUB REWARDS",
-    desc: "each account has a different $CLUB",
-    value: "20.4220 $CLUB",
-    footer: "$CLUB",
-  },
-  {
-    title: "STAKE $CLUB FOR CREATORS",
-    desc: "you will receive $CLUB every month",
-    value: "188.34257",
-    footer: "EST. Monthly $CLUB",
-    highlight: true,
-  },
-];
-
 // Variants
 const containerVariants = {
   hidden: { opacity: 0, y: 100 },
@@ -72,9 +50,18 @@ export default function FeatureSection() {
   ];
 
   const roles = [
-    { name: "Web Developer", icon: <MonitorCog className="text-blue-500" size={20} /> },
-    { name: "Frontend Engineer", icon: <LayoutDashboard className="text-blue-500" size={20} /> },
-    { name: "Project Manager", icon: <ClipboardList className="text-blue-500" size={20} /> },
+    {
+      name: "Web Developer",
+      icon: <MonitorCog className="text-blue-500" size={20} />,
+    },
+    {
+      name: "Frontend Engineer",
+      icon: <LayoutDashboard className="text-blue-500" size={20} />,
+    },
+    {
+      name: "Project Manager",
+      icon: <ClipboardList className="text-blue-500" size={20} />,
+    },
   ];
 
   return (
