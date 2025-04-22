@@ -24,7 +24,7 @@ export default function Hero() {
       {/* Judul */}
       <div className="relative z-10 max-w-7xl mx-auto text-center space-y-2">
         <h1 className="text-[3.5rem] md:text-[12rem] font-black font-outfit leading-none tracking-tight">
-          <span className="block">IT'S TIME</span>
+          <span className="block">IT&apos;S TIME</span>
           <span className="block">TO</span>
           <span className="block">CODE!</span>
         </h1>

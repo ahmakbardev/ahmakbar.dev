@@ -40,7 +40,6 @@ export default function HorizontalScrollGallery() {
   const isHovering = useRef(false);
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
   const [activeCard, setActiveCard] = useState<number | null>(null);
-  const [visibleCard, setVisibleCard] = useState<number | null>(null);
 
   useAnimationFrame(() => {
     if (!containerRef.current) return;
@@ -139,13 +138,9 @@ export default function HorizontalScrollGallery() {
                   }
                   onMouseEnter={() => {
                     setActiveCard(i);
-                    setVisibleCard(i);
                   }}
                   onMouseLeave={() => {
                     setActiveCard(null);
-                    setTimeout(() => {
-                      setVisibleCard(null);
-                    }, 500); // delay sebelum menghilangkan (match durasi reverse)
                   }}
                   className={`absolute bottom-0 left-0 w-full h-full origin-bottom-left
                     bg-[#0f172a] text-white rounded-2xl shadow-xl p-4 flex flex-col justify-between 
