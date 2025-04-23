@@ -70,7 +70,7 @@ export default function FeatureSection() {
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
       variants={containerVariants}
-      className="relative bg-white rounded-t-[7rem] min-h-[792px] md:h-[85vh] pt-20 px-6 lg:px-[3rem]"
+      className="relative bg-white rounded-t-[7rem] min-h-[792px] md:h-[85vh] pt-20 px-6 lg:px-[6rem]"
     >
       <Image
         src="/index/person.webp"
@@ -110,7 +110,7 @@ export default function FeatureSection() {
           <div className="flex flex-col py-5 items-end">
             <h1 className="font-outfit text-7xl font-semibold">Hey there,</h1>
             <h1 className="font-outfit text-8xl font-bold">
-              I’m Akbar <span className="text-6xl">👋</span>
+              I’m Akbar <span className="text-4xl">👋</span>
             </h1>
           </div>
           <p className="text-lg md:text-xl text-center md:text-end max-w-2xl text-black font-montserrat leading-relaxed">

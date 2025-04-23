@@ -9,15 +9,26 @@ module.exports = {
     // "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    screens: {
+      xxs: "320px",
+      lxs: "360px",
+      xs: "575px",
+      lsm: "600px",
+      sm: "640px",
+      md: "768px",
+      lg: "1024px",
+      xl: "1280px",
+      "2xl": "1536px",
+    },
     extend: {
       fontFamily: {
         jakarta: ["var(--font-jakarta)", "sans-serif"],
         outfit: ["var(--font-outfit)", "sans-serif"],
         sniglet: ["var(--font-sniglet)", "cursive"],
-        montserrat: ['var(--font-montserrat)', 'sans-serif'],
+        montserrat: ["var(--font-montserrat)", "sans-serif"],
       },
       transitionProperty: {
-        'z': 'z-index',
+        z: "z-index",
       },
     },
   },
