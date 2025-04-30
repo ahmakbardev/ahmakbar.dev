@@ -54,14 +54,30 @@ export default function TestimonialGrid() {
 
   useEffect(() => {
     if (inView) {
-      services.forEach((s, i) => {
-        controls.start((index) =>
-          index === i ? { x: s.x, y: s.y, rotate: s.rotate, opacity: 1 } : {},
-        );
-      });
-      titleControls.start({ opacity: 1, scale: 1 });
+      const timeout = setTimeout(() => {
+        services.forEach((s, i) => {
+          controls.start((index) =>
+            index === i
+              ? {
+                  x: s.x,
+                  y: s.y,
+                  rotate: s.rotate,
+                  opacity: 1,
+                  transition: { duration: 0.4 },
+                }
+              : {},
+          );
+        });
+
+        titleControls.start({
+          opacity: 1,
+          scale: 1,
+        });
+      }, 1000); // delay 5 detik
+
+      return () => clearTimeout(timeout); // cleanup kalau user scroll cepat
     }
-  }, [inView, controls, titleControls]); // ✅ fix deps
+  }, [inView, controls, titleControls]);
 
   return (
     <section ref={ref} className="relative h-screen w-screen overflow-hidden">

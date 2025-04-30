@@ -22,10 +22,10 @@ export default function Header() {
       className={clsx(
         "fixed top-0 left-0 w-full z-50 transition-all duration-300",
         isScrolled && "py-2",
-        !isScrolled && "py-4"
+        !isScrolled && "py-4",
       )}
     >
-      <div className="max-w-7xl mx-auto px-4">
+      <div className="max-w-6xl mx-auto px-4">
         <NavbarDesktop />
         <NavbarMobile />
       </div>
