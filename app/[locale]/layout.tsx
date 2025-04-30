@@ -45,21 +45,21 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-export default async function LocaleLayout({
-  children,
-  params,
-}: {
+export default async function LocaleLayout(props: {
   children: React.ReactNode;
   params: { locale: string };
 }) {
-  const messages = await getMessages({ locale: params.locale });
+  const { children, params } = props;
+  const locale = params.locale;
+
+  const messages = await getMessages({ locale });
 
   return (
-    <html lang={params.locale}>
+    <html lang={locale}>
       <body
         className={`${jakarta.variable} ${outfit.variable} ${montserrat.variable} ${sniglet.variable} font-jakarta`}
       >
-        <NextIntlClientProvider locale={params.locale} messages={messages}>
+        <NextIntlClientProvider locale={locale} messages={messages}>
           <SmoothScroll />
           <Header />
           <div className="-top-[77px] bg-[#0052FF]">{children}</div>
