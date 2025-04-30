@@ -10,6 +10,7 @@ import {
   SiReact,
 } from "react-icons/si";
 import { MonitorCog, LayoutDashboard, ClipboardList } from "lucide-react";
+// import { getClientLocale } from "@/lib/i18n";
 
 // Variants
 const containerVariants = {
@@ -32,8 +33,10 @@ const cardVariants = {
 };
 
 export default function FeatureSection() {
+  // const locale = getClientLocale();
   const t = useTranslations("feature-section");
-  console.log("Test id title1:", t("left.title1"));
+  // console.log("📦 Client locale:", locale);
+  // console.log("Test id title1:", t("left.title1"));
 
   const techStack = [
     {

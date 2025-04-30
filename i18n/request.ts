@@ -18,8 +18,8 @@ export default getRequestConfig(
       await import(`@/dictionaries/feature-section/${language}.json`)
     ).default;
 
-    console.log(">>> Loaded messages for:", language);
-    console.log(featureMessages);
+    // console.log(">>> Loaded messages for:", language);
+    // console.log(featureMessages);
 
     return {
       locale: language,
