@@ -21,7 +21,7 @@ function scrambleWord(target: string, step: number): string {
     .map((char, i) =>
       i < step
         ? char
-        : CHARACTERS[Math.floor(Math.random() * CHARACTERS.length)]
+        : CHARACTERS[Math.floor(Math.random() * CHARACTERS.length)],
     )
     .join("");
 }
@@ -31,7 +31,7 @@ function useScramble(
   target: string,
   intervalTime = 40,
   totalSteps = 10,
-  trigger?: string
+  trigger?: string,
 ) {
   const [displayed, setDisplayed] = useState(target);
 

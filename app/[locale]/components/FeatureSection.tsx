@@ -1,7 +1,7 @@
 "use client";
-
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import {
   SiCodeigniter,
   SiLaravel,
@@ -32,6 +32,8 @@ const cardVariants = {
 };
 
 export default function FeatureSection() {
+  const t = useTranslations("feature-section");
+
   const techStack = [
     {
       name: "CodeIgniter",
@@ -49,9 +51,11 @@ export default function FeatureSection() {
     { name: "React", icon: <SiReact className="text-[#61dbfb]" size={20} /> },
   ];
 
+  const roleLabels = t.raw("right.roles") as string[];
+
   const roles = [
     {
-      name: "Web Developer",
+      name: roleLabels[0],
       icon: <MonitorCog className="text-blue-500" size={20} />,
     },
     {
@@ -86,15 +90,14 @@ export default function FeatureSection() {
         <div className="relative h-full flex flex-col">
           <div className="py-5">
             <span className="2xl:text-7xl xl:text-6xl lg:text-5xl xs:text-8xl text-3xl font-semibold">
-              LEARN
+              {t("left.title1")}
             </span>
-            <span className="2xl:text-8xl xl:text-6xl lg:text-5xl xs:text-8xl text-3xl block font-bold">
-              & GROW
+            <span className="2xl:text-7xl xl:text-6xl lg:text-5xl xs:text-8xl text-3xl block font-bold">
+              {t("left.title2")}
             </span>
           </div>
           <p className="text-sm xs:text-lg text-left max-w-2xl text-black font-montserrat leading-relaxed">
-            I craft thoughtful, user-centered experiences that not only solve
-            problems but also enhance the way people interact with technology.
+            {t("left.description")}
           </p>
           {/* KIRI BAWAH – Expertise */}
           <div className="mt-8 grid grid-cols-1 gap-3 max-w-full">
@@ -113,16 +116,17 @@ export default function FeatureSection() {
         <div className="relative flex flex-col h-full">
           <div className="flex flex-col py-5 items-end">
             <h1 className="font-outfit 2xl:text-7xl xl:text-6xl lg:text-5xl xs:text-8xl text-3xl font-semibold">
-              Hey there,
+              {t("right.greeting1")}
             </h1>
             <h1 className="font-outfit 2xl:text-7xl xl:text-6xl lg:text-5xl xs:text-8xl text-3xl font-bold">
-              I’m Akbar <span className="xl:text-4xl text-3xl">👋</span>
+              {t("right.greeting2")}
+              <span className="xl:text-4xl text-3xl">👋</span>
             </h1>
           </div>
           <p className="text-sm xs:text-lg text-end max-w-2xl text-black font-montserrat leading-relaxed">
-            I design and build purposeful web experiences with clean code, clear
-            logic, and a strong sense of user empathy — drawing on my experience
-            both as a <b>Web Developer</b> and a <b>Former Project Manager</b>.
+            {t.rich("right.description", {
+              b: (chunks) => <b>{chunks}</b>,
+            })}
           </p>
           {/* KANAN BAWAH – Roles */}
           <div className="mt-8 grid grid-cols-1 gap-3 max-w-full">

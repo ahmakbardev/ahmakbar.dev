@@ -4,7 +4,8 @@ import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { ChevronDown } from "lucide-react";
 import { clsx } from "clsx";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useRouter, usePathname } from "next/navigation";
 
 interface LanguageSwitcherProps {
   isScrolled?: boolean;
@@ -18,7 +19,26 @@ const languages = [
 export default function LanguageSwitcher({
   isScrolled,
 }: LanguageSwitcherProps) {
-  const [selectedLang, setSelectedLang] = useState(languages[0]); // default: English
+  const [selectedLang, setSelectedLang] = useState(languages[0]);
+  const [isReady, setIsReady] = useState(false); // ⬅️ tambahkan state
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const getPathWithoutLocale = (path: string) => {
+    const segments = path.split("/");
+    return `/${segments.slice(2).join("/")}`;
+  };
+
+  useEffect(() => {
+    const currentLocale = pathname.split("/")[1];
+    const lang = languages.find((l) => l.code === currentLocale);
+    if (lang) {
+      setSelectedLang(lang);
+      setIsReady(true); // ✅ set ready setelah selesai deteksi locale
+    }
+  }, [pathname]);
+
+  if (!isReady) return null; // ⬅️ hide saat masih loading locale
 
   return (
     <DropdownMenu.Root>
@@ -52,8 +72,10 @@ export default function LanguageSwitcher({
             <DropdownMenu.Item
               key={lang.code}
               onClick={() => {
-                setSelectedLang(lang);
-                console.log("Change language to", lang.code);
+                if (lang.code !== selectedLang.code) {
+                  const cleanPath = getPathWithoutLocale(pathname);
+                  router.push(`/${lang.code}${cleanPath}`, { scroll: false });
+                }
               }}
               className="flex items-center gap-2 w-full rounded-lg px-3 py-2 transition-colors hover:bg-[#f3f4f6] text-black cursor-pointer"
             >

@@ -2,8 +2,10 @@
 
 import Image from "next/image";
 import { SiCodeigniter, SiNextdotjs } from "react-icons/si";
+import useRootPath from "@/lib/hooks/useRootPath";
 
 export default function Hero() {
+  const icon = useRootPath("/icons/hashtag.svg");
   return (
     <section className="relative group overflow-hidden bg-[#0052FF] text-white py-48 px-6 md:px-10">
       {/* Grid background */}
@@ -19,7 +21,7 @@ export default function Hero() {
       {/* Hashtag */}
       <div className="absolute xxs:left-[-5px] lxs:left-[-10px] md:left-[100px] lg:top-[80px] xl:top-[100px] xl:left-[180px] 2xl:top-[100px] 2xl:left-[380px] rotate-[10deg] scale-[2]">
         <Image
-          src="/icons/hashtag.svg"
+          src={icon}
           alt="Hashtag"
           width={90}
           height={90}
@@ -44,6 +46,7 @@ export default function Hero() {
           width={90}
           height={90}
           className="rotate-[10deg] scale-[1] lxs:scale-[1.5] xs:scale-[2] md:scale-[2.5] transition-transform duration-500 group-hover:translate-x-6 group-hover:-translate-y-6 group-hover:animate-pulse"
+          unoptimized
         />
       </div>
 
@@ -55,6 +58,7 @@ export default function Hero() {
           width={90}
           height={90}
           className="rotate-[10deg] scale-[1] lxs:scale-[1.5] xs:scale-[2] md:scale-[2.5] transition-transform duration-500 group-hover:-translate-x-6 group-hover:translate-y-6 group-hover:animate-pulse"
+          unoptimized
         />
       </div>
 

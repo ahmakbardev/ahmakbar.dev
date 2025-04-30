@@ -73,20 +73,26 @@ export default function NavbarDesktop() {
           />
         </div>
         <div className="flex-1 flex justify-center">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={clsx(
-                "px-5 py-2 rounded-full font-medium transition-colors duration-300",
-                pathname === item.href
-                  ? "bg-white text-[#0052FF]"
-                  : "text-white hover:bg-white/20 hover:text-white",
-              )}
-            >
-              {item.label}
-            </Link>
-          ))}
+          {navItems.map((item) => {
+            const currentPath = pathname.split("/").slice(2).join("/") || "";
+            const itemPath = item.href.replace(/^\//, "");
+            const isActive = currentPath === itemPath;
+
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={clsx(
+                  "px-5 py-2 rounded-full font-medium transition-colors duration-300",
+                  isActive
+                    ? "bg-white text-[#0052FF]"
+                    : "text-white hover:bg-white/20 hover:text-white",
+                )}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
         </div>
         <div className="flex-1 flex justify-end gap-4">
           {socialLinks.map((social) => (
