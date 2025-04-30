@@ -13,6 +13,7 @@ export default function LayoutClientWrapper({
   children: React.ReactNode;
 }) {
   const locale = useLocale();
+  console.log("🔤 Active locale from client:", locale);
 
   if (!routing.locales.includes(locale as (typeof routing.locales)[number])) {
     notFound();

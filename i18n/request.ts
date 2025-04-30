@@ -8,7 +8,7 @@ import { routing } from "@/lib/routing";
 
 export default getRequestConfig(
   async ({ locale }: GetRequestConfigParams): Promise<RequestConfig> => {
-    const language = (locale ?? "en").split("-")[0] as "en" | "id";
+    const language = (locale ?? "en") as "en" | "id";
 
     // Validate locale
     if (!routing.locales.includes(language)) notFound();
@@ -17,6 +17,9 @@ export default getRequestConfig(
     const featureMessages = (
       await import(`@/dictionaries/feature-section/${language}.json`)
     ).default;
+
+    console.log(">>> Loaded messages for:", language);
+    console.log(featureMessages);
 
     return {
       locale: language,

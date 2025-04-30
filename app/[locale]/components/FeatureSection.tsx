@@ -33,6 +33,7 @@ const cardVariants = {
 
 export default function FeatureSection() {
   const t = useTranslations("feature-section");
+  console.log("Test id title1:", t("left.title1"));
 
   const techStack = [
     {

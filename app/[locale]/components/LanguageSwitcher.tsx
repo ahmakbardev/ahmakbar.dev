@@ -30,16 +30,17 @@ export default function LanguageSwitcher({
   };
 
   useEffect(() => {
-    const currentLocale = pathname.split("/")[1];
+    if (typeof window === "undefined") return;
+
+    const currentLocale = window.location.pathname.split("/")[1];
     const lang = languages.find((l) => l.code === currentLocale);
     if (lang) {
       setSelectedLang(lang);
-      setIsReady(true); // ✅ set ready setelah selesai deteksi locale
+      setIsReady(true); // FIX INI PENTING
     }
   }, [pathname]);
 
-  if (!isReady) return null; // ⬅️ hide saat masih loading locale
-
+  if (!isReady) return null;
   return (
     <DropdownMenu.Root>
       <DropdownMenu.Trigger asChild>
@@ -75,6 +76,7 @@ export default function LanguageSwitcher({
                 if (lang.code !== selectedLang.code) {
                   const cleanPath = getPathWithoutLocale(pathname);
                   router.push(`/${lang.code}${cleanPath}`, { scroll: false });
+                  router.refresh(); // Opsional untuk memastikan message berubah
                 }
               }}
               className="flex items-center gap-2 w-full rounded-lg px-3 py-2 transition-colors hover:bg-[#f3f4f6] text-black cursor-pointer"
